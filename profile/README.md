@@ -1,3 +1,7 @@
+# Amplify
+
+Amplify is an open source enterprise Generative AI platform for organizations. The platform has advanced Gen AI capabilities and gives you choice in which model providers you use, from Anthropic Claude to OpenAI GPT-4o. Build your own assistants, integrate your data, and share across your organization.
+
 # Deployment Instructions
 
 These are the deployment instructions to deploy Amplify-GenAI in your own AWS environment. This deployment will create many resources in your account. Please be aware that there are costs associated with deploying the following application.
