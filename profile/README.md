@@ -13,7 +13,7 @@ Before you begin the deployment process, ensure you have the following prerequis
 - Terraform installed and configured
 - Access to the AWS account with an IAM user and keys to use an AWS CLI
 - AWS CLI installed and configured
-- Install Python 3.11, Python 3.10 along with pip for each verison. 
+- Install Python 3.11 and Python 3.10 along with pip for each verison. 
 - Domain hosted in Route53 in the deployment AWS account
 - Serverless Framework version 3.38.0 installed and configured
 - Docker installed and configured
