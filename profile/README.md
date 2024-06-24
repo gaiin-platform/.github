@@ -45,12 +45,12 @@ Before you begin the deployment process, ensure you have the following prerequis
 - Install the necessary Serverless plugins by running the following commands in the `amplify-genai-backend` directory:
 
   ```sh
-  serverless plugin install -n serverless-offline
-  serverless plugin install -n serverless-python-requirements
-  serverless plugin install -n serverless-prune-plugin
-  serverless plugin install -n serverless-deployment-bucket
-  serverless plugin install -n serverless-iam-roles-per-function
-  serverless plugin install -n serverless-domain-manager
+  npm install --save-dev serverless-offline
+  npm install --save-dev serverless-python-requirements
+  npm install --save-dev serverless-prune-plugin
+  npm install --save-dev serverless-deployment-bucket
+  npm install --save-dev serverless-iam-roles-per-function
+  npm install --save-dev serverless-domain-manager
   ```
 
 - For each of the following directories within the `amplify-genai-backend` repository, navigate to the directory and install the necessary Python 3.11 packages:
