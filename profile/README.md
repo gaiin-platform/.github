@@ -14,7 +14,7 @@ Before you begin the deployment process, ensure you have the following prerequis
 - Access to the AWS account with an IAM user and keys to use an AWS CLI
 - AWS CLI installed and configured
 - Domain hosted in Route53 in the deployment AWS account
-- Serverless Framework installed and configured
+- Serverless Framework version 3.38.0 installed and configured
 - Docker installed and configured
 - Mixpanel account set up with a project created. The Mixpanel token can be found under "Project Settings" with the name "Project Token"
 
