@@ -15,7 +15,7 @@ Before you begin the deployment process, ensure you have the following prerequis
 - AWS CLI installed and configured
 - Install Python 3.11 and Python 3.10 along with pip for each verison. 
 - Domain hosted in Route53 in the deployment AWS account
-- Serverless Framework version 3.38.0 installed and configured  ```sh - npm install -g serverless@3.38.0 ```
+- Serverless Framework version 3.38.0 installed and configured  `npm install -g serverless@3.38.0`
 - Docker installed and configured
 - Mixpanel account set up with a project created. The Mixpanel token can be found under "Project Settings" with the name "Project Token"
 
