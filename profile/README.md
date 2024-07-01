@@ -46,43 +46,66 @@ Before you begin the deployment process, ensure you have the following prerequis
 - Install the necessary Serverless plugins by running the following commands in the `amplify-genai-backend` directory:
 
   ```sh
-  npm install --save-dev serverless-offline
-  npm install --save-dev serverless-python-requirements
-  npm install --save-dev serverless-prune-plugin
-  npm install --save-dev serverless-deployment-bucket
-  npm install --save-dev serverless-iam-roles-per-function
-  npm install --save-dev serverless-domain-manager
+  npm install 
   ```
 
-- For each of the following directories within the `amplify-genai-backend` repository, navigate to the directory and install the necessary Python 3.11 packages:
-  - `amplify-genai-backend/amplify-assistants`
-  - `amplify-genai-backend/amplify-lambda`
-  - `amplify-genai-backend/object-access`
-  - `amplify-genai-backend/utilities`
-  
-  In each of these directories, execute the command `pip install -r requirements.txt` to install Python dependencies.
+- We'll need to create to virtual environments, one for each version of python, for the serverless install environment in the 'amplify-genai-backend' directory:
 
-- For the `amplify-genai-backend/embedding` and `amplify-genai-backend/chat-billing` directories, we recommend creating a virtual env to install the necessary Python 3.10 dependencies.
+```sh
+python3.11 -m venv .311venv
+source .311venv/bin/activate
+python --version #should return python 3.11
+pip install -r 311Requirements.txt
+deactivate
+
+python3.10 -m venv .310venv
+source .310venv/bin/activate
+python --version #should return python 3.10
+pip install -r 310Requirements.txt
+deactivate
+```
 
 - For the JavaScript dependencies, navigate to the `amplify-genai-backend/amplify-lambda-js` directory and run `npm install` to install the necessary Node.js packages.
 
 ### 5. Deploy Serverless Backend Services
 
-- To deploy the backend services using the Serverless Framework, navigate to the `amplify-genai-backend` directory.
+- To deploy the Python 3.11 backend services using the Serverless Framework, navigate to the `amplify-genai-backend` directory.
 - Execute the `serverless-compose.yml` script to deploy all backend lambdas properly via the following command:
 
   ```sh
+  source .311venv/bin/activate
   serverless deploy --stage <env>
+  deactivate
   ```
 
 - If an individual service fails to deploy and you cannot resolve the issue through the Serverless Framework, you may need to manually delete the associated CloudFormation stack from the AWS console before retrying the deployment.
 - To deploy an individual service, execute:
 
   ```sh
+  source .311venv/bin/activate
   serverless <service-name>:deploy --stage <env>
+  deactivate
   ```
 
+-
+
   where `service-name` is the specific service key as defined in `serverless-compose.yml`.
+
+- When all of the 3.11 Services are successfully deploy. You can continue on to install the two 3.10 Services. 
+
+  ```sh
+  cd object-access
+  source .310venv/bin/activate
+  serverless deploy --stage <env>
+  ```
+- If the object-access service completes successfully change directories into the embeddings service and deploy it as well. Because of the creation of an RDS instance, this can   take 10-15 minutes. 
+
+  ```sh
+  cd ../embedding
+  serverless deploy --stage <env>
+  deactivate
+  ```
+  
 
 ### 6. Update Task Definition and Apply Terraform Configuration
 
