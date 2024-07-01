@@ -51,19 +51,19 @@ Before you begin the deployment process, ensure you have the following prerequis
 
 - We'll need to create to virtual environments, one for each version of python, for the serverless install environment in the 'amplify-genai-backend' directory:
 
-```sh
-python3.11 -m venv .311venv
-source .311venv/bin/activate
-python --version #should return python 3.11
-pip install -r 311Requirements.txt
-deactivate
+  ```sh
+  python3.11 -m venv .311venv
+  source .311venv/bin/activate
+  python --version #should return python 3.11
+  pip install -r 311Requirements.txt
+  deactivate
 
-python3.10 -m venv .310venv
-source .310venv/bin/activate
-python --version #should return python 3.10
-pip install -r 310Requirements.txt
-deactivate
-```
+  python3.10 -m venv .310venv
+  source .310venv/bin/activate
+  python --version #should return python 3.10
+  pip install -r 310Requirements.txt
+  deactivate
+  ```
 
 - For the JavaScript dependencies, navigate to the `amplify-genai-backend/amplify-lambda-js` directory and run `npm install` to install the necessary Node.js packages.
 
@@ -87,9 +87,7 @@ deactivate
   deactivate
   ```
 
--
-
-  where `service-name` is the specific service key as defined in `serverless-compose.yml`.
+- where `service-name` is the specific service key as defined in `serverless-compose.yml`.
 
 - When all of the 3.11 Services are successfully deploy. You can continue on to install the two 3.10 Services. 
 
