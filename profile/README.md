@@ -115,6 +115,7 @@ After deploying the backend services, you will need to update certain variables 
   - `CHAT_ENDPOINT`: The exported variable from the amplify-js CloudFormation stack.
   - `COGNITO_CLIENT_ID`: Found in the App Client settings within the Cognito console on AWS.
   - `COGNITO_ISSUER`: The base URL for your Cognito user pool, found in the Cognito console on AWS.
+  - `COGNITO_DOMAIN`: The custom Cognito domain, found in the App integration tab of the Cognito console on AWS.
 
 - Update the `amplify-genai-iac/ev/terraform.tfvars` file with the newly obtained values for the respective variables.
 
