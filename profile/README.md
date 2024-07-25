@@ -49,7 +49,7 @@ Before you begin the deployment process, ensure you have the following prerequis
   npm install 
   ```
 
-- We'll need to create to virtual environments, one for each version of python, for the serverless install environment in the 'amplify-genai-backend' directory:
+- We'll need to create two virtual environments, one for each version of python, for the serverless install environment in the 'amplify-genai-backend' directory:
 
   ```sh
   python3.11 -m venv .311venv
