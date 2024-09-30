@@ -2,6 +2,13 @@
 
 Amplify is an open source enterprise Generative AI platform for organizations. The platform has advanced Gen AI capabilities and gives you choice in which model providers you use, from Anthropic Claude to OpenAI GPT-4o. Build your own assistants, integrate your data, and share across your organization.
 
+# Architecture
+
+<a href="Amplify_GenAI_Diag.png" target="_blank">
+  <img src="Amplify_GenAI_Diag.png" alt="Amplify GenAI Architecture" width="450" height="326">
+</a>
+
+
 # Deployment Instructions
 
 These are the deployment instructions to deploy Amplify-GenAI in your own AWS environment. This deployment will create many resources in your account. Please be aware that there are costs associated with deploying the following application.
@@ -20,6 +27,8 @@ Before you begin the deployment process, ensure you have the following prerequis
 - Docker installed and configured
 - Mixpanel account set up with a project created. The Mixpanel token can be found under `Project Settings` with the name `Project Token`
 - For models in Amazon Bedrock, enable your selected models via `Model Access` in the Bedrock console
+
+
 
 ## Steps
 
