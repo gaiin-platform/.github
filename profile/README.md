@@ -60,15 +60,6 @@ Before you begin the deployment process, ensure you have the following prerequis
   npm install 
   ```
 
-- We'll need to create a virtual environment for the serverless install environment in the `amplify-genai-backend` directory:
-
-  ```sh
-  python3.11 -m venv .311venv
-  source .311venv/bin/activate
-  python --version #should return python 3.11
-  pip install -r 311Requirements.txt
-  deactivate
-  ```
 
 - For the JavaScript dependencies, navigate to the `amplify-genai-backend/amplify-lambda-js` directory and run `npm install` to install the necessary Node.js packages.
 
@@ -78,18 +69,18 @@ Before you begin the deployment process, ensure you have the following prerequis
 - Deploy all backend lambdas by running the following commands:
 
   ```sh
-  source .311venv/bin/activate
+
   serverless deploy --stage <env>
-  deactivate
+
   ```
 
 - If an individual service fails to deploy, and you cannot resolve the issue through the Serverless Framework, you may need to manually delete the associated CloudFormation stack from the AWS console before retrying the deployment.
 - To deploy an individual service, execute:
 
   ```sh
-  source .311venv/bin/activate
+ 
   serverless <service-name>:deploy --stage <env>
-  deactivate
+
   ```
 
 - where `service-name` is the specific service key as defined in `serverless-compose.yml`.
@@ -101,7 +92,6 @@ After deploying the backend services, you will need to update certain variables 
 
 - Obtain the following environment specific (e.g., `dev`, `prod`) variables from the deployed backend services and AWS Console:
   - `API_BASE_URL`: The base URL for your API endpoints. This should be the custom API domain within the API gateway console.
-  - `ASSISTANTS_API_BASE`: The exported variable from the `assistants-<env>` CloudFormation stack.
   - `CHAT_ENDPOINT`: The exported variable from the `amplify-js-<env>`` CloudFormation stack.
   - `COGNITO_CLIENT_ID`: Found in the App Client settings within the Cognito console on AWS.
   - `COGNITO_ISSUER`: The base URL for your Cognito user pool, found in the Cognito console on AWS.
@@ -155,11 +145,14 @@ Additionally, certain secrets must be updated manually in the AWS Secrets Manage
   #### Anthropic (via Amazon Bedrock)
     - `anthropic.claude-instant-v1`
     - `anthropic.claude-v2:1`
+    - `us.anthropic.claude-3-5-sonnet-20241022-v2:0` This models use the Bedrock Inference Endpoints. Refer to this [link](https://docs.aws.amazon.com/bedrock/latest/userguide/inference-profiles-support.html "Bedrock Inference Regions") and deploy in the appropriate regions.
     - `anthropic.claude-3-5-sonnet-20240620-v1:0`
     - `anthropic.claude-3-sonnet-20240229-v1:0`
+    - `us.anthropic.claude-3-5-haiku-20241022-v1:0` This models use the Bedrock Inference Endpoints. Refer to this [link](https://docs.aws.amazon.com/bedrock/latest/userguide/inference-profiles-support.html "Bedrock Inference Regions") and deploy in the appropriate regions. 
     - `anthropic.claude-3-haiku-20240307-v1:0`
-    - `anthropic.claude-3-opus-20240229-v1:0`
+    - `us.anthropic.claude-3-opus-20240229-v1:0` This models use the Bedrock Inference Endpoints. Refer to this [link](https://docs.aws.amazon.com/bedrock/latest/userguide/inference-profiles-support.html "Bedrock Inference Regions") and deploy in the appropriate regions.
   
+
   #### OpenAI (via OpenAI or Azure)
     - `gpt-35-turbo`
     - `gpt-4o`
@@ -170,7 +163,7 @@ Additionally, certain secrets must be updated manually in the AWS Secrets Manage
     - `mistral.mixtral-8x7b-instruct-v0:1`
     - `mistral.mistral-large-2402-v1:0`
 
-  Populate `AVAILABLE_MODELS` with a comma-delimited list of the supported models you wish to make available. To use the Anthropic or Mistral models, you will need to enable them in your AWS account and then update the `AVAILABLE_MODELS` environment variable in the `amplify-genai-iac` project and run `terraform apply`.
+  Populate `AVAILABLE_MODELS` with a comma-delimited list of the supported models you wish to make available. To use the Anthropic or Mistral models, you will need to enable them in your AWS account and then update the `AVAILABLE_MODELS` environment variable in the `amplify-genai-iac` project and run `terraform apply`. For Bedrock models, please ensure you have requested access in the appropriate regions. 
 
   Example:
   ```
