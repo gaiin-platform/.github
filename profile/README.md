@@ -1,36 +1,85 @@
 # Amplify
 
-Amplify is an open source enterprise Generative AI platform for organizations. The platform has advanced Gen AI capabilities and gives you choice in which model providers you use, from Anthropic Claude to OpenAI GPT-4o. Build your own assistants, integrate your data, and share across your organization.
+## Overview of Amplify
 
-# Architecture
+Amplify is Vanderbilt University's open-source enterprise platform for generative AI, designed to empower organizations with the ability to innovate across disciplines. By offering a flexible and cost-efficient chat-based interface, Amplify allows users to experiment with and deploy generative AI solutions tailored to their specific needs. Its architecture supports vendor independence, ensuring that users can select and switch between a variety of AI models, such as those from OpenAI and Anthropic, without being locked into a single provider.
+
+## Key Use Cases
+
+Amplify has been deployed in diverse contexts, including:
+* **Higher Education**: Streamlining content creation, such as generating quizzes, study guides, or visual aids for lectures.
+* **Administrative Operations**: Automating tasks like policy summarization and contract review to improve efficiency.
+* **Cross-Disciplinary Research**: Enabling teams from various fields to experiment with generative AI applications, such as data visualization or text generation, while maintaining control over their data.
+Amplify’s customization options, such as creating reusable templates and domain-specific assistants, make it an adaptable tool for institutional needs.
+
+## Open-Source Advantage
+
+As an open-source platform, Amplify offers the following benefits:
+* **Modification**: Users can tailor the platform to suit unique requirements.
+* **Accessibility**: Organizations can deploy Amplify in their own AWS environments, reducing dependency on external providers.
+* **Community-Driven Improvements**: Amplify’s open-source model fosters a collaborative ecosystem where users can contribute enhancements and share best practices.
+
+---
+
+# Getting Started With Amplify
+
+## Architecture
 
 <a href="Amplify_GenAI_Diag.png" target="_blank">
   <img src="Amplify_GenAI_Diag.png" alt="Amplify GenAI Architecture" width="450" height="326">
 </a>
 
+## System Requirements
+To deploy and operate Amplify, the following system prerequisites are recommended:
+* **Hardware/Software Requirements**:
+  * AWS account with appropriate IAM permissions
+  * Terraform installed and configured
+  * Python 3.11, pip, and the Serverless Framework (version 3.38.0)
+  * Docker installed and configured
+  * Domain hosted in Amazon Route 53
+* **Integration Requirements**:
+  * Mixpanel account for analytics
+  * Model access enabled in the AWS Bedrock console (for Anthropic or Mistral models)
 
-# Deployment Instructions
+## General Installation and Setup Overview
+
+1. **Clone Repositories**
+
+Clone the three required repositories—frontend, backend, and infrastructure—from the GitHub repository.
+
+2. **Initialize and Apply Terraform**
+
+Configure Terraform variables and initialize the environment with `terraform init`, followed by `terraform apply`.
+
+3. **Set Up Backend Services**
+
+* Configure and deploy the backend services using the Serverless Framework.
+* Update environment variables with outputs from the Terraform deployment.
+
+4. **Build and Deploy the Frontend**
+* Build the Docker image from the frontend repository.
+* Deploy the image to Amazon ECR and update ECS services.
+
+5. **Finalize Configuration**
+* Update secrets in AWS Secrets Manager for sensitive variables (e.g., API keys, client secrets).
+* Upload and configure necessary files, such as base prompts and endpoints, in S3.
+
+---
+# How To Use Amplify
+
+* Using The Chat Interface
+* Conversations View
+* Sharing View
+* Assistants, Templates, and Instructions
+* How To Share in Amplify
+* Settings
+* Examples of How To Use Amplify
+
+---
+
+## In Depth Deployment Steps
 
 These are the deployment instructions to deploy Amplify-GenAI in your own AWS environment. This deployment will create many resources in your account. Please be aware that there are costs associated with deploying the following application.
-
-## Prerequisites
-
-Before you begin the deployment process, ensure you have the following prerequisites met:
-
-- Terraform installed and configured
-- Access to the AWS account with an IAM user and keys to use an AWS CLI
-- [AWS CLI](https://aws.amazon.com/cli/) installed and configured
-- Python 3.11 and pip installed
-- Domain hosted in Amazon Route 53 in the deployment AWS account
-- Serverless Framework version 3.38.0 installed and configured  
- `npm install -g serverless@3.38.0`
-- Docker installed and configured
-- Mixpanel account set up with a project created. The Mixpanel token can be found under `Project Settings` with the name `Project Token`
-- For models in Amazon Bedrock, enable your selected models via `Model Access` in the Bedrock console
-
-
-
-## Steps
 
 ### 1. Clone Repositories
 
