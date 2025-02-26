@@ -67,9 +67,10 @@ Configure Terraform variables and initialize the environment with `terraform ini
 ---
 # How To Use Amplify
 
-* Using The Chat Interface
-* Conversations View
-* Sharing View
+* [Using The Chat Interface](../docs/chat-interface.md)
+* [Conversations View](../docs/conversation-view.md)
+* [Sharing View](../docs/sharing-view.md)
+* Workspace View [Deprecated]
 * Assistants, Templates, and Instructions
 * How To Share in Amplify
 * Settings
