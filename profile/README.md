@@ -21,12 +21,12 @@ As an open-source platform, Amplify offers the following benefits:
 
 ## Amplify Costs & Pricing Overview
 
-Amplify is an **open-source platform**, meaning there are no licensing fees to use it. However, users must cover costs associated with **hosting** and **AI token** usage based on their selected cloud provider and AI models.
+Amplify is an **open-source platform**, meaning there are no licensing fees to use it. However, users must cover costs associated with **hosting** and **AI token** usage based on the cloud provider and AI models.
 
 ### Estimating Costs
 
 * Hosting Costs:
-  * Users are responsible for hosting Amplify on AWS, Azure, or another cloud provider.
+  * Users are responsible for hosting Amplify on AWS.
   * Typical cloud hosting costs range from $2-3 per user per month, but this may vary based on usage and configuration.
 * AI Token Usage Costs:
   * Amplify connects to AI models that charge per 1,000 input and output tokens (a token is approximately 4 characters of text).
