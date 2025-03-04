@@ -25,9 +25,11 @@ Amplify is an **open-source platform**, meaning there are no licensing fees to u
 
 ### Estimating Costs
 
+Please Note: the minimum cost associated with hosting an instance of Amplify with no usage is ~$250/mo. This is due to the fact that there are some provisioned resources in AWS do not scale completely to zero, and there is some cost associated with keeping the instance alive.
+
 * Hosting Costs:
-  * Users are responsible for hosting Amplify on AWS.
-  * Typical cloud hosting costs range from $2-3 per user per month, but this may vary based on usage and configuration.
+  * Users are responsible for paying for AWS costs associated with hosting Amplify.
+  * Cost may vary based on usage and configuration.
 * AI Token Usage Costs:
   * Amplify connects to AI models that charge per 1,000 input and output tokens (a token is approximately 4 characters of text).
   * Costs depend on the AI model used in your conversations.
