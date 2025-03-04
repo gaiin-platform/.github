@@ -1,6 +1,6 @@
 # Assistants, Prompt Templates, & Instructions
 
-![Helpers, Assistants, and Instructions Side Bar](./images/templates-helpers-assistants-sidebar.png)
+![Side Bar View](./images/templates-helpers-assistants-sidebar.png)
 
 The **Prompts Sidebar** in Amplify allows you to manage and organize AI prompts, assistants, and custom instructions for streamlined interactions.
 
@@ -47,7 +47,7 @@ These tools allow users to fine-tune AI interactions, ensuring responses are rel
 
 Prompt templates in Amplify allow users to create reusable AI prompts for consistent interactions. Follow these steps to configure a Prompt Template using the setup form.
 
-![Helpers, Assistants, and Instructions Side Bar](./images/prompt-template-form.png)
+![Prompt Template Form](./images/prompt-template-form.png)
 
 ### Steps to Create a Prompt Template
 
@@ -78,7 +78,7 @@ Once saved, the prompt template will be available in the **Prompts Sidebar**, re
 
 Custom Instructions in Amplify allow users to define how the AI behaves across interactions. These settings shape response tone, structure, and decision-making.
 
-![Helpers, Assistants, and Instructions Side Bar](./images/instruction-template-ui.png)
+![Custom Instructions Form](./images/instruction-template-ui.png)
 
 ### Steps to Create a Prompt Template
 * **Name**
@@ -107,7 +107,7 @@ Once saved, the custom instruction will be available in the **Prompts Sidebar** 
 
 Amplify allows you to create custom AI Assistants to automate tasks, provide structured responses, and enhance workflow efficiency. Follow these steps to configure your assistant using the setup form.
 
-![Helpers, Assistants, and Instructions Side Bar](./images/assistant-template-ui.png)
+![Assistant Creation Form](./images/assistant-template-ui.png)
 
 ### Steps to Create an AI Assistant
 
