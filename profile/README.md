@@ -93,8 +93,7 @@ Configure Terraform variables and initialize the environment with `terraform ini
 * [Sharing View](../docs/sharing-view.md)
 * Workspace View [Deprecated]
 * [Assistants, Templates, and Instructions](../docs/assistants-templates-instructions.md)
-* How To Share in Amplify
-* Settings
+* [How To Share in Amplify](../docs//sharing.md)
 * [Examples of How To Use Amplify](../docs/usage-examples.md)
 
 ---
