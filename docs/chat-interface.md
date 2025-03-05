@@ -9,7 +9,7 @@ Choose the model you would like to use from the dropdown menu. The choices avail
 
 For more tips on what model is best for what tasks you can hover your cursor over each option to view a tooltip overview of each one.
 
-![New Conversation UI](./images/choosing-a-model.png)
+![Selecting A Model](./images/choosing-a-model.png)
 
 ### Custom Instructions
 Custom instructions in AI refer to predefined guidelines or parameters that shape how an AI system behaves, responds to user inputs, and processes information. For more information on how this works and where you can create your own instructions please refer to our Creating Custom Instructions section.

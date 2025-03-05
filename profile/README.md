@@ -94,10 +94,9 @@ Configure Terraform variables and initialize the environment with `terraform ini
 * [Conversations View](../docs/conversation-view.md)
 * [Sharing View](../docs/sharing-view.md)
 * Workspace View [Deprecated]
-* Assistants, Templates, and Instructions
-* How To Share in Amplify
-* Settings
-* Examples of How To Use Amplify
+* [Assistants, Templates, and Instructions](../docs/assistants-templates-instructions.md)
+* [How To Share in Amplify](../docs//sharing.md)
+* [Examples of How To Use Amplify](../docs/usage-examples.md)
 
 ---
 
