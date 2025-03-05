@@ -19,6 +19,29 @@ As an open-source platform, Amplify offers the following benefits:
 * **Accessibility**: Organizations can deploy Amplify in their own AWS environments, reducing dependency on external providers.
 * **Community-Driven Improvements**: Amplify’s open-source model fosters a collaborative ecosystem where users can contribute enhancements and share best practices.
 
+## Amplify Costs & Pricing Overview
+
+Amplify is an **open-source platform**, meaning there are no licensing fees to use it. However, users must cover costs associated with **hosting** and **AI token** usage based on the cloud provider and AI models.
+
+### Estimating Costs
+
+Please Note: the minimum cost associated with hosting an instance of Amplify with no usage is ~$250/mo. This is due to the fact that there are some provisioned resources in AWS do not scale completely to zero, and there is some cost associated with keeping the instance alive.
+
+* Hosting Costs:
+  * Users are responsible for paying for AWS costs associated with hosting Amplify.
+  * Cost may vary based on usage and configuration.
+* AI Token Usage Costs:
+  * Amplify connects to AI models that charge per 1,000 input and output tokens (a token is approximately 4 characters of text).
+  * Costs depend on the AI model used in your conversations.
+
+For more details on pricing, refer to:
+
+🔗 [AWS Bedrock Pricing](https://aws.amazon.com/bedrock/pricing/)
+
+🔗 [OpenAI Pricing](https://openai.com/pricing/)
+
+🔗 [Azure OpenAI Pricing](https://azure.microsoft.com/en-us/products/cognitive-services/openai-service/#pricing)
+
 ---
 
 # Getting Started With Amplify
