@@ -19,6 +19,29 @@ As an open-source platform, Amplify offers the following benefits:
 * **Accessibility**: Organizations can deploy Amplify in their own AWS environments, reducing dependency on external providers.
 * **Community-Driven Improvements**: Amplify’s open-source model fosters a collaborative ecosystem where users can contribute enhancements and share best practices.
 
+## Amplify Costs & Pricing Overview
+
+Amplify is an **open-source platform**, meaning there are no licensing fees to use it. However, users must cover costs associated with **hosting** and **AI token** usage based on the cloud provider and AI models.
+
+### Estimating Costs
+
+Please Note: the minimum cost associated with hosting an instance of Amplify with no usage is ~$250/mo. This is due to the fact that there are some provisioned resources in AWS do not scale completely to zero, and there is some cost associated with keeping the instance alive.
+
+* Hosting Costs:
+  * Users are responsible for paying for AWS costs associated with hosting Amplify.
+  * Cost may vary based on usage and configuration.
+* AI Token Usage Costs:
+  * Amplify connects to AI models that charge per 1,000 input and output tokens (a token is approximately 4 characters of text).
+  * Costs depend on the AI model used in your conversations.
+
+For more details on pricing, refer to:
+
+🔗 [AWS Bedrock Pricing](https://aws.amazon.com/bedrock/pricing/)
+
+🔗 [OpenAI Pricing](https://openai.com/pricing/)
+
+🔗 [Azure OpenAI Pricing](https://azure.microsoft.com/en-us/products/cognitive-services/openai-service/#pricing)
+
 ---
 
 # Getting Started With Amplify
@@ -71,12 +94,78 @@ Configure Terraform variables and initialize the environment with `terraform ini
 * [Conversations View](../docs/conversation-view.md)
 * [Sharing View](../docs/sharing-view.md)
 * Workspace View [Deprecated]
-* Assistants, Templates, and Instructions
-* How To Share in Amplify
-* Settings
-* Examples of How To Use Amplify
+* [Assistants, Templates, and Instructions](../docs/assistants-templates-instructions.md)
+* [How To Share in Amplify](../docs//sharing.md)
 
 ---
+
+## Setting Up Billing for Amplify’s Supported AI Models
+
+Amplify is open-source and free to use, but users are responsible for AI model costs incurred through Amazon Bedrock, OpenAI, or Azure OpenAI. This guide walks you through setting up billing for these services to ensure uninterrupted access to AI-powered features.
+
+### Setting Up Billing for Amazon Bedrock
+Amazon Bedrock provides access to Anthropic Claude and Mistral models. To enable billing for AI model usage:
+
+**Step 1: Enable Amazon Bedrock in AWS**
+* Sign in to your AWS Management Console.
+* Navigate to Amazon Bedrock: [AWS Bedrock Console](https://aws.amazon.com/bedrock/).
+* Click "Enable Bedrock" if not already activated.
+
+**Step 2: Set Up Billing**
+* Go to AWS Billing Dashboard: [AWS Billing](https://console.aws.amazon.com/billing/home).
+* Under "Billing Preferences", set up a payment method.
+* Enable Cost Alerts to track usage.
+
+**Step 3: Assign IAM Permissions (If Needed)**
+* Ensure your AWS user role has "Bedrock:InvokeModel" permissions to use models.
+* Use the IAM console to grant access to specific teams.
+
+### Setting Up Billing for OpenAI API (GPT Models)
+To use OpenAI’s GPT models in Amplify, you need an OpenAI API key with a valid billing account.
+
+**Step 1: Create an OpenAI Account & API Key**
+* Go to [OpenAI Platform](https://platform.openai.com/).
+* Sign in or create an account.
+* Navigate to API Keys under your account settings.
+* Click "Create API Key", then securely store it.
+
+**Step 2: Set Up Billing**
+* Go to [OpenAI Billing](https://platform.openai.com/account/billing).
+* Add a payment method.
+* Set monthly usage limits to avoid unexpected charges.
+
+**Step 3: Enable Usage Monitoring**
+* Check "Usage" under OpenAI’s dashboard to track token consumption.
+* If needed, set spending caps to prevent excessive costs.
+
+### Setting Up Billing for Azure OpenAI
+Azure OpenAI provides access to GPT models (GPT-3.5, GPT-4, GPT-4o, etc.) within an enterprise cloud environment.
+
+**Step 1: Create an Azure Subscription**
+* Sign in to [Azure Portal](https://portal.azure.com/).
+* Go to Azure OpenAI Service and select "Create a Resource".
+* Choose a region that supports OpenAI models.
+
+**Step 2: Enable Billing**
+* Go to [Azure Cost Management](https://azure.microsoft.com/en-us/products/cost-management).
+* Select "Payment Methods" and add a credit card or invoice-based billing.
+* Set up spending limits and cost alerts.
+
+**Step 3: Generate an API Key**
+* Navigate to Azure OpenAI Resource.
+* Go to Keys and Endpoint.
+* Copy your API Key and endpoint for Amplify integration.
+
+#### Monitoring & Managing Costs
+To avoid unexpected expenses, follow these best practices:
+
+* ✔ Set up cost alerts in AWS, OpenAI, or Azure.
+* ✔ Monitor token usage in your provider’s billing dashboard.
+* ✔ Use lower-cost models (e.g., Claude Instant, GPT-3.5) when applicable.
+* ✔ Enable spending caps to control monthly costs.
+
+### Next Steps
+Once billing is set up, you can integrate your API key with Amplify to start using AI-powered features
 
 ## In Depth Deployment Steps
 
