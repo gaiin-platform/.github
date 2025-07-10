@@ -182,6 +182,12 @@ These are the deployment instructions to deploy Amplify-GenAI in your own AWS en
   npm install 
   ```
 
+- Package `markitdown` for deployment by nagivating to the `amplify-genai-backend/amplify-lambda/markitdown` directory, then run the install script (elevation may be required as sudo):
+
+ ```sh
+sudo ./markitdown.sh
+ ```
+
 ### 5. Deploy Serverless Backend Services
 
 - To deploy the Python 3.11 backend services using the Serverless Framework, navigate to the `amplify-genai-backend` directory.
