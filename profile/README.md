@@ -182,6 +182,12 @@ These are the deployment instructions to deploy Amplify-GenAI in your own AWS en
   npm install 
   ```
 
+- Package `markitdown` for deployment by nagivating to the `amplify-genai-backend/amplify-lambda/markitdown` directory, then run the install script (elevation may be required as sudo):
+
+ ```sh
+sudo ./markitdown.sh
+ ```
+
 ### 5. Deploy Serverless Backend Services
 
 - To deploy the Python 3.11 backend services using the Serverless Framework, navigate to the `amplify-genai-backend` directory.
@@ -246,9 +252,35 @@ Additionally, certain secrets must be updated manually in the AWS Secrets Manage
 
 - Configure the `amplify-genai-backend/misc_deployment_files/endpoints.json` file with your Azure endpoints and associated keys. Update the AWS Secrets Manager secret titled `<env>-openai-endpoints`.
 
-### 9. Clean Up
+### 9. Enable and configure SSO (optional)
+
+We recommend validating your environment by first logging in with a Cognito user. When ready, to enable Single Sign-On (SSO) support, you will need to update certain variables in your Terraform (IAC) configuration.
+
+- Obtain the SAML metadata URL for your SSO/SAML provider.
+
+- Determine the attribute mapping between your provider and Cognito.
+
+- Update the `amplify-genai-iac/<env>/terraform.tfvars` file:
+  - Change `use_saml_idp` from `false` to `true`
+  - Update `sp_metadata_url` value with your SAML provider's metadata URL
+  - Add `attribute_mapping` parameter following this format (adjusting the mapping as neeeded for your environment):
+
+    ```
+    attribute_mapping = {
+      email       = "E-Mail Address"
+      name        = "Name"
+      given_name  = "Given Name"
+      family_name = "Surname"
+      "custom:saml_groups" = "groups"
+    }
+    ```
+
+- Apply the updated Terraform configuration by running `terraform apply` within the `amplify-genai-iac/<env>` project directory.
+
+### 10. Clean Up & Config Protection
 
 - After the deployment, remove any temporary files or secrets that were created during the process. This includes any local configuration files or sensitive information that should not be stored permanently.
+- We recommend committing your cloned repos with your specific configuration to your organization Git/code repository for backup and version control.
 
 ## Notes
 
