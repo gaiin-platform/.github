@@ -60,6 +60,7 @@ To deploy and operate Amplify, the following system prerequisites are recommende
   * Python 3.11, pip, and the Serverless Framework (version 3.38.0)
   * Docker installed and configured
   * Domain hosted in Amazon Route 53
+  
 * **Integration Requirements**:
   * Mixpanel account for analytics
   * Model access enabled in the AWS Bedrock console for chosen Bedrock-hosted models
@@ -184,9 +185,9 @@ These are the deployment instructions to deploy Amplify-GenAI in your own AWS en
 
 - Package `markitdown` for deployment by nagivating to the `amplify-genai-backend/amplify-lambda/markitdown` directory, then run the install script (elevation may be required as sudo):
 
- ```sh
-sudo ./markitdown.sh
- ```
+  ```sh
+  sudo ./markitdown.sh
+  ```
 
 ### 5. Deploy Serverless Backend Services
 
@@ -213,6 +214,8 @@ After deploying the backend services, you will need to update certain variables 
 
 - Obtain the following environment specific (e.g., `dev`, `prod`) variables from the deployed backend services and AWS Console:
   - `API_BASE_URL`: The base URL for your API endpoints. This should be the custom API domain within the API gateway console.
+  - `BEDROCK_GUARDRAIL_ID`: The ID of the Amazon Bedrock Guardrail to use. _This is optional and should be left blank to not enable use of a Guardrail._
+  - `BEDROCK_GUARDRAIL_VERSION`: The version number of the Bedrock Gaurdrail to use. _This is optional and should be left blank if a Guardrail is not to be used and the Gaurdrail ID is empty._
   - `CHAT_ENDPOINT`: The exported variable from the `amplify-js-<env>`` CloudFormation stack.
   - `COGNITO_CLIENT_ID`: Found in the App Client settings within the Cognito console on AWS.
   - `COGNITO_ISSUER`: The base URL for your Cognito user pool, found in the Cognito console on AWS.
@@ -229,6 +232,7 @@ Additionally, certain secrets must be updated manually in the AWS Secrets Manage
 - Navigate to the AWS Secrets Manager and locate the secret named `amplify-app-secrets`.
 - Manually update the following secret values:
   - `COGNITO_CLIENT_SECRET`: Can be found in the App Client settings within the Cognito console in AWS.
+  - `GEMINI_API_KEY`: If using Gemini models, create and populate this with your API key.
   - `NEXTAUTH_SECRET`: The random secret for next auth that you used in tfvars above.
   - `OPENAI_API_KEY`: Insert your OpenAI API Key.
 
