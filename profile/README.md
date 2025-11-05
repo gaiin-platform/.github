@@ -168,6 +168,10 @@ These are the deployment instructions to deploy Amplify-GenAI in your own AWS en
 
 - After applying Terraform configurations, save the outputs from the Terraform state. These will be used in the variables needed for the Serverless Framework deployment.
 - Create and configure a `amplify-genai-backend/var/<env>-var.yml` file using the values from the Terraform outputs. Use `amplify-genai-backend/<env>-var.yml-example` as a reference for the required format and variables. You will need to configure all variables. The reference sample includes comments to denote which variable from the Terraform outputs are to be used.
+- If you wish to use Bedrock Guardrail, add the following parameters:
+  - `BEDROCK_GUARDRAIL_ID`: The ID of the Amazon Bedrock Guardrail to use. _This is optional and should be left blank to not enable use of a Guardrail._
+  - `BEDROCK_GUARDRAIL_VERSION`: The version number of the Bedrock Gaurdrail to use. _This is optional and should be left blank if a Guardrail is not to be used and the Gaurdrail ID is empty._
+
 
 ### 4. Backend Package Installation
 
@@ -214,8 +218,6 @@ After deploying the backend services, you will need to update certain variables 
 
 - Obtain the following environment specific (e.g., `dev`, `prod`) variables from the deployed backend services and AWS Console:
   - `API_BASE_URL`: The base URL for your API endpoints. This should be the custom API domain within the API gateway console.
-  - `BEDROCK_GUARDRAIL_ID`: The ID of the Amazon Bedrock Guardrail to use. _This is optional and should be left blank to not enable use of a Guardrail._
-  - `BEDROCK_GUARDRAIL_VERSION`: The version number of the Bedrock Gaurdrail to use. _This is optional and should be left blank if a Guardrail is not to be used and the Gaurdrail ID is empty._
   - `CHAT_ENDPOINT`: The exported variable from the `amplify-js-<env>`` CloudFormation stack.
   - `COGNITO_CLIENT_ID`: Found in the App Client settings within the Cognito console on AWS.
   - `COGNITO_ISSUER`: The base URL for your Cognito user pool, found in the Cognito console on AWS.
@@ -252,7 +254,7 @@ Additionally, certain secrets must be updated manually in the AWS Secrets Manage
   - Push the Docker image to the Amazon ECR repository with the `docker push` command.
   - Update the ECS service to use the new Docker image by forcing a new deployment with the AWS CLI or via the AWS Management Console.
 
-### 8. Configure S3, Secrets, and Azure Endpoints
+### 8. Configure Secrets and Azure Endpoints
 
 - Configure the `amplify-genai-backend/misc_deployment_files/endpoints.json` file with your Azure endpoints and associated keys. Update the AWS Secrets Manager secret titled `<env>-openai-endpoints`.
 
