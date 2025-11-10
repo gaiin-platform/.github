@@ -288,6 +288,19 @@ We recommend validating your environment by first logging in with a Cognito user
 - After the deployment, remove any temporary files or secrets that were created during the process. This includes any local configuration files or sensitive information that should not be stored permanently.
 - We recommend committing your cloned repos with your specific configuration to your organization Git/code repository for backup and version control.
 
+## User Guides
+
+For guides on how to use the Amplify platform, please refer to [the documentation located here](../docs). Currently, there is documentation for: 
+1) [API Guides](../docs/API%20Guides)
+2) [Assistant Guides](../docs/Assistant%20Guides)
+3) [Integration Guides](../docs/Integration%20Guides)
+4) [Sharing Guides](../docs/Sharing%20Guides)
+5) [Utility Guides](../docs/Utility%20Guides)
+
+For the legacy documentation, check [here.](../docs/Legacy%20Documentation)
+
+
+
 ## Notes
 
 - Throughout the deployment process, ensure that you are in the correct directories when executing commands.
