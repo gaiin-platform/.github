@@ -1,5 +1,13 @@
 # Amplify
 
+> ## :warning: v0.9.0 Breaking Change Notice
+>
+> **Version 0.9.0 introduces a breaking change.** All shared environment variables have been migrated to **AWS Parameter Store**. Existing deployments **must** run `populate_parameter_store.py` before upgrading.
+>
+> - The backend and frontend must be deployed together — deploy the backend first, then the frontend.
+> - See the [Migration Guide](https://github.com/gaiin-platform/amplify-genai-backend/blob/main/scripts/MIGRATION_README.md) for required steps.
+> - [Backend v0.9.0 Release Notes](https://github.com/gaiin-platform/amplify-genai-backend/releases/tag/v0.9.0) | [Frontend v0.9.0 Release Notes](https://github.com/gaiin-platform/amplify-genai-frontend/releases/tag/v0.9.0)
+
 ## Overview of Amplify
 
 Amplify is Vanderbilt University's open-source enterprise platform for generative AI, designed to empower organizations with the ability to innovate across disciplines. By offering a flexible and cost-efficient chat-based interface, Amplify allows users to experiment with and deploy generative AI solutions tailored to their specific needs. Its architecture supports vendor independence, ensuring that users can select and switch between a variety of AI models, such as those from OpenAI and Anthropic, without being locked into a single provider.
