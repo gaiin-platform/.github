@@ -2,10 +2,12 @@
 
 > ## :warning: v0.9.0 Breaking Change Notice
 >
-> **Version 0.9.0 introduces a breaking change.** All shared environment variables have been migrated to **AWS Parameter Store**. Existing deployments **must** run `populate_parameter_store.py` before upgrading.
+> **Version 0.9.0 introduces breaking changes.** All shared environment variables have been migrated to **AWS Parameter Store**, and the `amplify-lambda-basic-ops` service has been eliminated.
 >
+> - **Existing deployments** upgrading from v0.8.x **must** run `populate_parameter_store.py` before deploying.
+> - **If you have the `amplify-lambda-basic-ops` service**, you must handle the `/user-data` endpoint migration before deploying `amplify-lambda`. See the [Migration Guide](https://github.com/gaiin-platform/amplify-genai-backend/blob/main/scripts/MIGRATION_README.md) for detailed steps.
 > - The backend and frontend must be deployed together — deploy the backend first, then the frontend.
-> - See the [Migration Guide](https://github.com/gaiin-platform/amplify-genai-backend/blob/main/scripts/MIGRATION_README.md) for required steps.
+> - See the [Migration Guide](https://github.com/gaiin-platform/amplify-genai-backend/blob/main/scripts/MIGRATION_README.md) for all required steps.
 > - [Backend v0.9.0 Release Notes](https://github.com/gaiin-platform/amplify-genai-backend/releases/tag/v0.9.0) | [Frontend v0.9.0 Release Notes](https://github.com/gaiin-platform/amplify-genai-frontend/releases/tag/v0.9.0)
 
 ## Overview of Amplify
@@ -219,6 +221,37 @@ These are the deployment instructions to deploy Amplify-GenAI in your own AWS en
   ```
 
 - where `service-name` is the specific service key as defined in `serverless-compose.yml`.
+
+### 5a. Deploy Optional Standalone Services
+
+The following services are **not included** in `serverless-compose.yml` because they are not universally deployed. If your deployment uses any of these, you must deploy them individually by navigating into each service directory:
+
+- **Agent Loop** (`amplify-agent-loop-lambda/`) — Required if using agent loop functionality.
+- **Assistants API** (`amplify-lambda-assistants-api/`) — Required if using the Assistants API.
+- **Office 365 Integration** (`amplify-lambda-assistants-api-office365/`) — Required if using Office 365 integration.
+- **Google Integration** (`amplify-lambda-assistants-api-google/`) — Required if using Google Workspace integration.
+
+To deploy each standalone service:
+
+  ```sh
+  cd amplify-agent-loop-lambda
+  serverless deploy --stage <env>
+  cd ..
+
+  cd amplify-lambda-assistants-api
+  serverless deploy --stage <env>
+  cd ..
+
+  # Deploy if using Office 365 integration
+  cd amplify-lambda-assistants-api-office365
+  serverless deploy --stage <env>
+  cd ..
+
+  # Deploy if using Google Workspace integration
+  cd amplify-lambda-assistants-api-google
+  serverless deploy --stage <env>
+  cd ..
+  ```
 
 ### 6. Update Task Definition and Apply Terraform Configuration
 
