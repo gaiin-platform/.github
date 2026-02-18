@@ -203,7 +203,21 @@ These are the deployment instructions to deploy Amplify-GenAI in your own AWS en
   sudo ./markitdown.sh
   ```
 
-### 5. Deploy Serverless Backend Services
+### 5a. Populate AWS Parameter Store
+
+Before deploying any backend services, you must populate AWS Parameter Store with your shared environment variables. Navigate to the `amplify-genai-backend/scripts` directory and run:
+
+  ```sh
+  python3 populate_parameter_store.py --stage <env> --dep-name <dep-name>
+  ```
+
+- `<env>` is your deployment stage (e.g., `dev`, `prod`)
+- `<dep-name>` is your deployment name as defined in your var file
+- This script reads your `<env>-var.yml` file and populates the corresponding SSM parameters
+- All Lambda services resolve shared configuration from Parameter Store at deploy time — **services will fail to deploy without this step**
+- For more details, see the [Migration Guide](https://github.com/gaiin-platform/amplify-genai-backend/blob/main/scripts/MIGRATION_README.md)
+
+### 5b. Deploy Serverless Backend Services
 
 - To deploy the Python 3.11 backend services using the Serverless Framework, navigate to the `amplify-genai-backend` directory.
 - Deploy all backend lambdas by running the following commands:
@@ -222,7 +236,7 @@ These are the deployment instructions to deploy Amplify-GenAI in your own AWS en
 
 - where `service-name` is the specific service key as defined in `serverless-compose.yml`.
 
-### 5a. Deploy Optional Standalone Services
+### 5c. Deploy Optional Standalone Services
 
 The following services are **not included** in `serverless-compose.yml` because they are not universally deployed. If your deployment uses any of these, you must deploy them individually by navigating into each service directory:
 
